@@ -7,11 +7,14 @@
 }
 
 :root {
-  --primary-color: hsl(170, 100%, 26%);
+  --hue: 170;
+  --primary-color: hsl(var(--hue), 100%, 26%);
   --headline: hsl(210, 11%, 15%);
   --paragraph: hsl(210, 9%, 31%);
+
   --brand-beige: hsl(39, 100%, 97%);
-  --brand-light: hsl(148, 23%, 89%);
+  --brand-light: hsl(calc(var(--hue) - 22), 23%, 89%);
+  --brand-hover: hsl(var(--hue), 100%, 14%);
 
   --bg-light: hsl(180, 14%, 97%);
 
@@ -92,6 +95,73 @@ section .content p {
 
 }
 
+.button {
+  background-color: var(--primary-color);
+
+  border: none;
+  border-radius: 4rem;
+
+  margin-bottom: 6rem;
+
+  padding: 1.6rem 3.2rem;
+  width: fit-content; /*Faz com que a caixa se adapte ao conteúdo*/
+
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-transform: uppercase;
+
+  display: flex; /*flex mexe com os filhos (que estão dentro da caixa, elas perdem a posição que se encontravam, mas deixando flexíveis) */
+  align-items: center; /* com o display flex podemos usar o esse comando para centralizar o alinhamento perfeitamente como deve ser*/
+  justify-content: center; /*E aqui usamos para centralizar de fato todo o conteúdo filho para o meio da caixa*/
+  gap: 1.6rem; /*Faz a separação dos elementos permitindo um espaço entre os elemtentos*/
+
+  text-decoration: none;
+
+  transition: background 400ms;
+}
+
+.button:hover {
+  background-color: var(--brand-hover);
+  transition-duration: 0.7s;
+
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3.2rem;
+}
+
+/* === custom colors ===============================================*/
+
+#services .card circle {
+  fill: var(--brand-light);
+}
+
+#navigation .logo path[fill*="#00856F"],
+#backToTopButton circle {
+  fill: var(--primary-color);
+}
+
+button.open-menu path[stroke*="#00856F"],
+#contact li path {
+  stroke: var(--primary-color);
+}
+
+body.menu-expanded #navigation .logo path,
+#navigation.scroll .logo path{
+  fill: #fff;
+}
+
+#navigation.scroll button.open-menu path[stroke*="#00856F"]{
+  stroke: #fff;
+}
+
+
+/* === NAVIGATION ===============================================*/
+
 nav {
   display: flex;
 
@@ -112,14 +182,6 @@ nav .embrulhar {
 
 nav.scroll {
   background: var(--primary-color);
-}
-
-nav.scroll .logo path {
-  fill: white;
-}
-
-nav.scroll button path {
-  stroke: white;
 }
 
 nav button {
@@ -212,12 +274,15 @@ body.menu-expanded nav {
   margin-bottom: 8rem;
 }
 
-.social-links {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 3.2rem;
+.menu .button:hover{
+  background-color: var(--primary-color);
+  color: #fff;
+
+  filter: brightness(1.3);
+  transition: 0.7s;
 }
+
+
 
 body.menu-expanded .logo,
 body.menu-expanded button {
@@ -263,31 +328,8 @@ body.menu-expanded button path {
   margin-bottom: 3.2rem;
 }
 
-#home button {
-  background-color: var(--primary-color);
-
-  border: none;
-  border-radius: 4rem;
-
-  margin-bottom: 6rem;
-
-  height: 6.2rem;
-  width: 26.3rem;
-
-  margin-bottom: 1.6rem;
-
-  color: #fff;
-  font-size: 1.4rem;
-  font-weight: 700;
-  text-transform: uppercase;
-
-  display: flex; /*flex mexe com os filhos (que estão dentro da caixa, elas perdem a posição que se encontravam, mas deixando flexíveis) */
-  align-items: center; /* com o display flex podemos usar o esse comando para centralizar o alinhamento perfeitamente como deve ser*/
-  justify-content: center; /*E aqui usamos para centralizar de fato todo o conteúdo filho para o meio da caixa*/
-  gap: 1.6rem; /*Faz a separação dos elementos permitindo um espaço entre os elemtentos*/
-
-  margin-left: auto;
-  margin-right: auto;
+#home .button {
+  margin-inline: auto;
 }
 
 #home img {
@@ -331,8 +373,6 @@ body.menu-expanded button path {
   flex-direction: column;
   gap: 3.2rem;
 }
-#services header h4 {
-}
 
 #services header h2 {
   margin-bottom: 6rem;
@@ -360,6 +400,8 @@ body.menu-expanded button path {
   margin-block: 1.6rem;
 }
 
+
+
 /* === ABOUT ==============================================*/
 #about {
   text-align: left;
@@ -374,3 +416,88 @@ body.menu-expanded button path {
   margin-top: 2.4rem;
   margin-bottom: 6rem;
 }
+
+/* === CONTACT ==============================================*/
+
+#contact {
+  text-align: left;
+}
+
+#contact header {
+  margin-bottom: 3.2rem;
+}
+
+#contact ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+
+  margin-bottom: 3.2rem;
+}
+
+#contact ul li {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+/* === FOOTER  ==============================================*/
+
+/*Display inline não aceita margin-top e margin-bottom
+Não aceita Width/Height, assim eu tenho que fazer a transformação para - display: inline-block; */
+
+footer {
+  background-color: var(--primary-color);
+  padding-block: 6rem;
+
+  text-align: left;
+
+  color: white;
+}
+
+footer .logo{
+  display: inline-block;
+  margin-bottom: 2.4rem;
+}
+
+footer .logo svg{
+  width: 23.6rem;
+  height: 3.1rem;
+}
+
+footer .logo path{
+  fill: white;
+}
+
+footer p {
+  color: var(--brand-beige);
+  line-height: 2;
+
+  margin-bottom: 3.2rem;
+}
+
+footer .social-links {
+  justify-content: flex-start; /*Aqui estamos botando o social-links para ficar no começo início da janela*/
+  
+}
+
+/* === BACK TO TOP  ==============================================*/
+
+#backToTopButton {
+  position: fixed;
+  bottom: 1rem;
+  right: 2.5rem;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transform: translateY(100%);
+  transition: 300ms;
+}
+
+#backToTopButton.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+

@@ -7,8 +7,8 @@
 }
 
 :root {
-  --hue: 290;
-  --primary-color: hsl(var(--hue), 100%, 26%);
+  --hue: 174;
+  --primary-color: hsl(var(--hue), 100%, 34%);
   --headline: hsl(210, 11%, 15%);
   --paragraph: hsl(210, 9%, 31%);
 
@@ -122,6 +122,8 @@ section .content p {
   transition: background 400ms;
 }
 
+
+
 .button:hover {
   background-color: var(--brand-hover);
   transition-duration: 0.7s;
@@ -157,6 +159,10 @@ body.menu-expanded #navigation .logo path,
 
 #navigation.scroll button.open-menu path[stroke*='#00856F'] {
   stroke: #fff;
+}
+
+section .iconrow path {
+  stroke: var(--primary-color);
 }
 
 /* === NAVIGATION ===============================================*/
@@ -391,6 +397,11 @@ body.menu-expanded button path {
 #services .card h3 {
   margin-block: 1.6rem;
 }
+
+#services  .iconrow {
+  z-index: 100;
+}
+
 
 /* === ABOUT ==============================================*/
 #about {
@@ -654,12 +665,13 @@ footer .social-links {
   #home .embrulhar {
     grid-template-columns: 60.5rem 1fr;
     grid-template-areas: 
-    'A B'
+    'A A'
+    'B B'
     'C C';
   }
 
   #home .col-a {
-    text-align: left;
+    text-align: center;
     align-self: center;
   }
 
@@ -688,10 +700,6 @@ footer .social-links {
   #home .stats .stat { /*essa propriedade existe porque o elemento de fora é um flex*/
 
     flex: 1;
-  }
-
-  #home .button{
-    margin: 0;
   }
 
   #home img{

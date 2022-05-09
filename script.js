@@ -84,10 +84,11 @@ ScrollReveal({  //ScrollReavel é uma Lib que nos proporciona um efeito enquanto
 }).reveal(`#home,
  #home img,
   #home .stats,
-   #services,
-    #services header,
-      #services .card,
-        #about,
-          #about .content`);
+    #home .iconrow,
+      #services,
+        #services header,
+          #services .card,
+            #about,
+              #about .content`);
 
           

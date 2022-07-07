@@ -1,8 +1,8 @@
+const navigation = document.getElementById('navigation')
+
 window.addEventListener('scroll', onScroll) //Aqui a função evento vai adicionar um evento de scroll e um 'ouvinte' e quem receberia essa informação seria a nossa função onScroll
 
 onScroll() //Aqui estamos chamando a função para executar apenas uma única vez
-
-
 function onScroll() {
  showNavOnScroll()
  showBackToTopButtonOnScroll()
@@ -26,25 +26,24 @@ function activateMenuAtCurrentSection(section) {
   const sectionHeight = section.offsetHeight
 
   //o topo da seção chegou ou ultrapassou a linha alvo
-  const sectionTopReachOrPassedLine = targetLine >= sectionTop
+  const sectionTopReachOrPassedTargetline  = targetLine >= sectionTop
 
   //verificar se a base está abaixo da linha alvo
-  //quais dados ovu precisar?
+  //quais dados vou precisar?
 
   //a seção termina onde?
-  const sectionEnsdAt = sectionTop + sectionHeight
+  const sectionEndsAt = sectionTop + sectionHeight
 
   //o final da seção passou da linha alvo
-  const sectionEndPassedTargetLine = sectionEnsdAt <= targetLine
+  const sectionEndPassedTargetline = sectionEndsAt <= targetLine
 
   //limites da seção
-  const sectionBoundaries =
- sectionTopReachOrPassedLine &&
-  !sectionEndPassedTargetLine
+  const sectionBoundaries = sectionTopReachOrPassedTargetline && !sectionEndPassedTargetline
 
   const sectionId = section.getAttribute('id')
   const menuElement = document.querySelector(`.menu a[href*=${sectionId}]`)
   menuElement.classList.remove('active')
+
   if(sectionBoundaries) {
     menuElement.classList.add('active')
   }
